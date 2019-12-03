@@ -237,7 +237,7 @@ func (proxy *ProxyClient) CreateAccessRequest(ctx context.Context, req services.
 	if err != nil {
 		return trace.Wrap(err)
 	}
-	return site.CreateAccessRequest(req)
+	return site.CreateAccessRequest(ctx, req)
 }
 
 func (proxy *ProxyClient) GetAccessRequests(ctx context.Context, filter services.AccessRequestFilter) ([]services.AccessRequest, error) {
@@ -245,7 +245,7 @@ func (proxy *ProxyClient) GetAccessRequests(ctx context.Context, filter services
 	if err != nil {
 		return nil, trace.Wrap(err)
 	}
-	reqs, err := site.GetAccessRequests(filter)
+	reqs, err := site.GetAccessRequests(ctx, filter)
 	if err != nil {
 		return nil, trace.Wrap(err)
 	}
